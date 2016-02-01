@@ -1,0 +1,28 @@
+package:
+  name: 3scan-shared
+  version: {{ environ.get('GIT_DESCRIBE_TAG', "0.0.0") }}
+
+source:
+  path: "."
+
+build:
+  # The build number should be incremented for new builds of the same version
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  script: python setup.py install
+
+
+requirements:
+  # Packages required to build the package.
+  build:
+    - python
+    - setuptools
+    - patchelf  # [linux]
+
+  # Packages required to run the package.
+  run:
+    - python
+
+about:
+  home: https://github.com/3Scan/3scan-shared
+  license: Proprietary
+  summary: 3scan shared tools.
